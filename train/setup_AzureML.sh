@@ -4,6 +4,12 @@ AZURE_RESOURCE_GROUP_NAME=$2
 AZURE_ML_WORKSPACE_NAME=$3
 AZURE_LOCATION=$4 #az account list-locations -o table
 
+# Setup Azure variables
+export AZURE_SUBSCRIPTION_ID='693435d5-b7f7-4b30-aca7-3040401b8c5d'
+export AZURE_RESOURCE_GROUP_NAME='azure-ml-flvr'
+export AZURE_ML_WORKSPACE_NAME='cats-dogs-flvr'
+export AZURE_LOCATION='northeurope'
+
 
 # Initialize Azure ML Workspace
 az account set --subscription "$AZURE_SUBSCRIPTION_ID"

@@ -107,10 +107,10 @@ def azureml_pipeline(
 
 pipeline_job = azureml_pipeline(
     pdfs_input_data=Input(
-        path="azureml:flow-pasflow:1", type=AssetTypes.URI_FOLDER
+        path="azureml:cats_dogs_others:1", type=AssetTypes.URI_FOLDER
     ),
     labels_input_data=Input(
-        path="azureml:flow-pasflow-labels:1", type=AssetTypes.URI_FOLDER
+        path="azureml:cats_dogs_others_labels:1", type=AssetTypes.URI_FOLDER
     ),
 )
 

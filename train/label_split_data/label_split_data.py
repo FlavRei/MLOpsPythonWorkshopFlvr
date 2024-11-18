@@ -72,11 +72,11 @@ class LabelSplitDataResult:
 class LabelSplitDataInput:
     input_labels_path: Path
     input_images_directory: Path
-    input_pdfs_directory: Path
+    # input_pdfs_directory: Path
     output_images_directory: Path
     output_integration_directory: Path
     number_image_by_label: int = 3
-    number_pdfs_integration: int = 100
+    # number_pdfs_integration: int = 100
     ratio_number_train_image: float = 0.4
     ratio_number_test_image: float = 0.4
 
@@ -93,11 +93,11 @@ class DataSplit:
     ) -> LabelSplitDataResult:
         input_labels_path = input.input_labels_path
         input_images_directory = input.input_images_directory
-        input_pdfs_directory = input.input_pdfs_directory
+        # input_pdfs_directory = input.input_pdfs_directory
         output_images_directory = input.output_images_directory
         output_integration_directory = input.output_integration_directory
         number_image_by_label = input.number_image_by_label
-        number_pdfs_integration = input.number_pdfs_integration
+        # number_pdfs_integration = input.number_pdfs_integration
         ratio_number_train_image = input.ratio_number_train_image
         ratio_number_test_image = input.ratio_number_test_image
 
@@ -105,15 +105,15 @@ class DataSplit:
         if ratio_number_test_image + ratio_number_test_image > 1:
             raise Exception("sum of ratio must be inferior or equal to 1")
 
-        copy_pdfs_integration_input = CopyPdfsIntegrationInput(input_images_directory,
-                                                               input_pdfs_directory,
-                                                               output_integration_directory,
-                                                               number_pdfs_integration)
+        # copy_pdfs_integration_input = CopyPdfsIntegrationInput(input_images_directory,
+        #                                                        input_pdfs_directory,
+        #                                                        output_integration_directory,
+        #                                                        number_pdfs_integration)
 
-        pdfs_integration = copy_pdfs_integration(self.data_random, self.data_manager, copy_pdfs_integration_input)
+        # pdfs_integration = copy_pdfs_integration(self.data_random, self.data_manager, copy_pdfs_integration_input)
 
         split_copy_data_input = SplitCopyDataInput(input_images_directory, input_labels_path, number_image_by_label,
-                                                   output_images_directory, pdfs_integration,
+                                                   output_images_directory,
                                                    ratio_number_test_image, ratio_number_train_image)
 
         return split_copy_data(self.data_random,
@@ -127,7 +127,7 @@ class SplitCopyDataInput:
     input_labels_path: Path
     number_image_by_label: int
     output_images_directory: Path
-    pdfs_integration: [str]
+    # pdfs_integration: [str]
     ratio_number_test_image: float
     ratio_number_train_image: float
 
@@ -139,7 +139,7 @@ def split_copy_data(data_random: IDataRandom,
     input_labels_path = input.input_labels_path
     number_image_by_label = input.number_image_by_label
     output_images_directory = input.output_images_directory
-    pdfs_integration = input.pdfs_integration
+    # pdfs_integration = input.pdfs_integration
     ratio_number_test_image = input.ratio_number_test_image
     ratio_number_train_image = input.ratio_number_train_image
 
@@ -172,8 +172,8 @@ def split_copy_data(data_random: IDataRandom,
             data_manager.create_directory(labels_directory)
             for filename in splitted[split_directory_names.index(split_directory_name)]:
                 image_pdf_name = filename.split("_")[0]
-                if image_pdf_name + ".pdf" in pdfs_integration:
-                    continue
+                # if image_pdf_name + ".pdf" in pdfs_integration:
+                #     continue
                 output_filename = label + "_" + filename
                 destination_path = labels_directory / output_filename
                 source_path = input_images_directory / filename

@@ -11,8 +11,6 @@ is_deterministic: true
 inputs:
   extraction_images_input:
     type: uri_folder
-  extraction_hash_input:
-    type: uri_folder
   model_input:
     type: uri_folder
   integration_input:

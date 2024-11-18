@@ -84,5 +84,5 @@ class LabelSplitDataTest(unittest.TestCase):
         self.assertEqual(label_split_data_result.number_labeled_data, 9)
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

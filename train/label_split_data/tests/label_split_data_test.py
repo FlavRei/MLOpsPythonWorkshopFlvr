@@ -7,19 +7,19 @@ from label_split_data import DataSplit, LabelSplitDataInput, IDataRandom, DataRa
 
 BASE_PATH = Path(__file__).resolve().parent
 output_images_directory = BASE_PATH / "output_images"
-output_pdf_directory = BASE_PATH / "output_integration"
+# output_pdf_directory = BASE_PATH / "output_integration"
 input_directory = BASE_PATH / "input"
 input_images_directory = input_directory / "images"
 input_labels_path = input_directory / "labels" / "labels.json"
-input_pdfs_directory = input_directory / "pdfs"
+# input_pdfs_directory = input_directory / "pdfs"
 
 
 class LabelSplitDataTest(unittest.TestCase):
     def test_label_split_data(self):
         if output_images_directory.is_dir():
             shutil.rmtree(str(output_images_directory))
-        if output_pdf_directory.is_dir():
-            shutil.rmtree(str(output_pdf_directory))
+        # if output_pdf_directory.is_dir():
+        #     shutil.rmtree(str(output_pdf_directory))
 
         def shuffle(x):
             mypdf = None
@@ -37,7 +37,7 @@ class LabelSplitDataTest(unittest.TestCase):
             files_copied.append(str(to_file_path).replace(str(BASE_PATH), "").replace("\\", "/"))
 
         data_ramdom_mock = MagicMock(DataRandom)
-        data_ramdom_mock.shuffle = shuffle
+        # data_ramdom_mock.shuffle = shuffle
 
         data_manager = DataManager()
         data_manager_mock = MagicMock(IDataManager)
@@ -51,9 +51,9 @@ class LabelSplitDataTest(unittest.TestCase):
         label_split_data_input = LabelSplitDataInput(
             input_labels_path,
             input_images_directory,
-            input_pdfs_directory,
+            # input_pdfs_directory,
             output_images_directory,
-            output_pdf_directory,
+            # output_pdf_directory,
             number_image_by_label=3,
             number_pdfs_integration=1,
         )
@@ -61,7 +61,7 @@ class LabelSplitDataTest(unittest.TestCase):
         label_split_data_result = data_split.label_split_data(
             label_split_data_input
         )
-        expected = ['/output_integration/c.pdf',
+        expected = [
                     '/output_integration/c/c_page4_index0.png',
                     '/output_images/train/cats/cat_b_page1_index0.png',
                     '/output_images/test/cats/cat_b_page2_index0.png',

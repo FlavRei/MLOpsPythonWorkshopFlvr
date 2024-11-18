@@ -42,7 +42,7 @@ if access_token == "":
 async def main():
     base_path = Path(__file__).resolve().parent
     dataset_path = base_path / "labels"
-    filename = "cats-dogs-others-classification-annotations.json"
+    filename = "flowIA-annotations"
     dataset_path.mkdir(exist_ok=True)
 
     api_information = ApiInformation(api_url=api_url, access_token=access_token)

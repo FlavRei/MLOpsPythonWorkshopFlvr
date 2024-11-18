@@ -68,6 +68,7 @@ class LabelSplitDataTest(unittest.TestCase):
                     '/output_images/evaluate/cats/cat_b_page3_index0.png',
                     '/output_images/train/dogs/dog_b_page2_index0.png',
                     '/output_images/test/dogs/dog_b_page4_index0.png',
+                    '/output_images/evaluate/dogs/dog_c_page4_index0.png',
                     '/output_images/train/others/other_a_page0_index0.png',
                     '/output_images/test/others/other_b_page2_index0.png',
                     '/output_images/evaluate/others/other_b_page1_index0.png']

@@ -55,7 +55,7 @@ class LabelSplitDataTest(unittest.TestCase):
             output_images_directory,
             # output_pdf_directory,
             number_image_by_label=3,
-            number_pdfs_integration=1,
+            # number_pdfs_integration=1,
         )
 
         label_split_data_result = data_split.label_split_data(

@@ -93,7 +93,7 @@ def azureml_pipeline(
 
     output_step = load_component(source="output/command.yaml")
     output = output_step(
-        extraction_hash_input=label_split_data.outputs.hash_output,
+        # extraction_hash_input=extraction.outputs.hash_output,
         extraction_images_input=label_split_data.outputs.split_images_output,
         model_input=test_data.outputs.model_output,
         integration_input=test_data.outputs.integration_output,

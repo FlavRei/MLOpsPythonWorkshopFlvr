@@ -67,17 +67,16 @@ ml_client.begin_create_or_update(cluster_basic).result()
 
 @pipeline(default_compute=cluster_name)
 def azureml_pipeline(
-    pdfs_input_data: Input(type=AssetTypes.URI_FOLDER),
+    img_input_data: Input(type=AssetTypes.URI_FOLDER),
     labels_input_data: Input(type=AssetTypes.URI_FOLDER),
 ):
-    extraction_step = load_component(source="extraction/command.yaml")
-    extraction = extraction_step(pdfs_input=pdfs_input_data)
+    # extraction_step = load_component(source="extraction/command.yaml")
+    # extraction = extraction_step(pdfs_input=img_input_data)
 
     label_split_data_step = load_component(source="label_split_data/command.yaml")
     label_split_data = label_split_data_step(
         labels_input=labels_input_data,
-        pdfs_input=pdfs_input_data,
-        images_input=extraction.outputs.images_output,
+        images_input=img_input_data,
     )
 
     train_step = load_component(source="train/command.yaml")
@@ -106,7 +105,7 @@ def azureml_pipeline(
 
 
 pipeline_job = azureml_pipeline(
-    pdfs_input_data=Input(
+    img_input_data=Input(
         path="azureml:flow-pasflow:1", type=AssetTypes.URI_FOLDER
     ),
     labels_input_data=Input(

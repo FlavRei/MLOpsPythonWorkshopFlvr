@@ -81,7 +81,7 @@ def azureml_pipeline(
 
     train_step = load_component(source="train/command.yaml")
     train_data = train_step(
-        split_images_input=label_split_data.outputs.split_images_output
+        split_images_input=img_input_data
     )
 
     test_step = load_component(source="test/command.yaml")
@@ -116,13 +116,13 @@ pipeline_job = azureml_pipeline(
 
 azure_blob = "azureml://datastores/workspaceblobstore/paths/"
 experiment_id = str(uuid.uuid4())
-custom_output_path = azure_blob + "cats-dogs-others/" + experiment_id + "/"
+custom_output_path = azure_blob + "flowai/" + experiment_id + "/"
 pipeline_job.outputs.output = Output(
     type=AssetTypes.URI_FOLDER, mode="rw_mount", path=custom_output_path
 )
 
 pipeline_job = ml_client.jobs.create_or_update(
-    pipeline_job, experiment_name="cats_dos_others_pipeline", tags=tags
+    pipeline_job, experiment_name="flowai_pipeline", tags=tags
 )
 
 ml_client.jobs.stream(pipeline_job.name)
@@ -150,7 +150,7 @@ if registered_dataset is not None:
     loop = asyncio.get_event_loop()
     loop.run_until_complete(execute_async())
 
-model_name = "cats-dogs-others"
+model_name = "flowai"
 try:
     model_version = str(len(list(ml_client.models.list(model_name))) + 1)
 except:
@@ -170,9 +170,9 @@ print(
     f"Model with name {saved_model.name} was registered to workspace, the model version is {saved_model.version}."
 )
 
-integration_dataset_name = "cats-dogs-others-integration"
+integration_dataset_name = "flow-pasflow-integration"
 integration_dataset = Data(
-    name="cats-dogs-others-integration",
+    name="flow-pasflow-integration",
     path=custom_output_path + "integration",
     type=AssetTypes.URI_FOLDER,
     description="Integration dataset for cats and dogs and others",

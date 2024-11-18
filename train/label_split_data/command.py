@@ -34,7 +34,7 @@ label_split_data_input = LabelSplitDataInput(
     # Path(pdfs_input),
     Path(split_images_output),
     Path(split_integration_output),
-    number_file_by_label,
+    # number_file_by_label,
     # number_pdfs_integration,
     ratio_train,
     ratio_test,

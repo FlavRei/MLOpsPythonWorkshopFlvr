@@ -28,7 +28,7 @@ environment:
 code: ./
 command: >-
   python command.py
-  --extraction_images_input ${{inputs.extraction_hash_input}}
+  --extraction_images_input ${{inputs.extraction_images_input}}
   --model_input ${{inputs.model_input}}
   --integration_input ${{inputs.integration_input}}
   --main_output ${{outputs.main_output}}

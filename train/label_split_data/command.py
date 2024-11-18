@@ -26,7 +26,7 @@ ratio_test: float = 0.2
 params = {"number_file_by_label": number_file_by_label, "ratio_train": ratio_train, "ratio_test": ratio_test}
 
 mlflow.log_params(params)
-labels_files_path = Path(labels_input) / "flowIA-annotations"
+labels_files_path = Path(labels_input) / "flowIA-annotations.json"
 
 label_split_data_input = LabelSplitDataInput(
     labels_files_path,

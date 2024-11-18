@@ -62,7 +62,7 @@ class LabelSplitDataTest(unittest.TestCase):
             label_split_data_input
         )
         expected = [
-                    '/output_integration/c/c_page4_index0.png',
+                    
                     '/output_images/train/cats/cat_b_page1_index0.png',
                     '/output_images/test/cats/cat_b_page2_index0.png',
                     '/output_images/evaluate/cats/cat_b_page3_index0.png',

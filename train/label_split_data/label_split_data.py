@@ -74,7 +74,7 @@ class LabelSplitDataInput:
     input_images_directory: Path
     # input_pdfs_directory: Path
     output_images_directory: Path
-    output_integration_directory: Path
+    # output_integration_directory: Path
     number_image_by_label: int = 3
     # number_pdfs_integration: int = 100
     ratio_number_train_image: float = 0.4

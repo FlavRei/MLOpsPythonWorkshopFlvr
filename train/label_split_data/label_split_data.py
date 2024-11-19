@@ -71,6 +71,7 @@ class LabelSplitDataInput:
     input_labels_path: Path
     input_images_directory: Path
     output_images_directory: Path
+    output_integration_directory: Path
     number_images_per_label: int
     ratio_train: float = 0.4
     ratio_test: float = 0.4

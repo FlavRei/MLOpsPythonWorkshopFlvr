@@ -72,6 +72,16 @@ def run_test_harness(
     datagen = ImageDataGenerator(featurewise_center=True)
     # specify imagenet mean values for centering
     datagen.mean = [123.68, 116.779, 103.939]
+
+    if not input_directory.exists():
+        raise FileNotFoundError(f"Input directory {input_directory} does not exist!")
+
+    for subdir in ["train", "evaluate", "test"]:
+        path = input_directory / subdir
+        if not path.exists():
+            raise FileNotFoundError(f"Subdirectory {path} does not exist!")
+        print(f"Contents of {path}: {os.listdir(path)}")
+
     # prepare iterator
     train_it = datagen.flow_from_directory(
         str(input_directory / "train"),
